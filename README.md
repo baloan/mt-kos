@@ -32,23 +32,26 @@ Kerbal Automated Mission Challenge scripts. The Minmus missions illustrate how t
 
 1. Vessel: [Mun Lander 1b](http://ksp.baldev.de/kos/mtkv3)
 
-> `run kamc0.   // outbound`
+`run kamc0.   // outbound`
 
-> `run kamc1.   // return`
+`run kamc1.   // return`
+
 
 ###  Minmus mission "Wikinger" 
 1. This vessels' stage 2 separation requires two ''stage'' statements.
 1. You'll know why I call it "Viking" when you see the lander.
 1. Vessel: [http://ksp.baldev.de/kos/mtkv3 Minmus Lander 1b]
-#: `[http://ksp.baldev.de/kos/mtkv3/kamc2.txt run kamc2.]   // outbound`
-#: `[http://ksp.baldev.de/kos/mtkv3/kamc4.txt run kamc4.]   // return`
+`[http://ksp.baldev.de/kos/mtkv3/kamc2.txt run kamc2.]   // outbound`
+`[http://ksp.baldev.de/kos/mtkv3/kamc4.txt run kamc4.]   // return`
+
 ###  Minmus mission 2 
 1. This vessels' stage 2 separation requires one ''stage'' statements.
 1. Vessel: [http://ksp.baldev.de/kos/mtkv3 Minmus Lander 1c]
-#: `[http://ksp.baldev.de/kos/mtkv3/kamc3.txt run kamc3.]   // outbound`
-#: `[http://ksp.baldev.de/kos/mtkv3/kamc4.txt run kamc4.]   // return`
+`[http://ksp.baldev.de/kos/mtkv3/kamc3.txt run kamc3.]   // outbound`
+`[http://ksp.baldev.de/kos/mtkv3/kamc4.txt run kamc4.]   // return`
+
 ###  Known issues 
-1. When planet and moon are aligned with the sun it may happen that the lander travels in the planet's or moon's shadow for prolonged times during transfer. During those periods of travel in the dark the battery may run empty and shut down the kOS module due to lack of electricity. This will stop the script and require manual restarting of the mission script to execute the remaining commands.
+1. When planet and moon are aligned with the sun it may happen that the lander travels in the planet's or moon's shadow for prolonged times during transfer. During those periods of travel in the dark the battery may run empty and shut down the kOS module due to lack of electricity. This will stop the script and require manual restarting of the mission script to execute the remaining commands. 
 
 ## Launch & Landing scripts 
 ###  Launch to Orbit / Atmosphere 
@@ -70,11 +73,11 @@ Kerbal Automated Mission Challenge scripts. The Minmus missions illustrate how t
 
 ### Land / Vacuum 
 > `run [http://ksp.baldev.de/kos/mtkv3/landv.txt landv(ecoh)]. // ecoh: engine cut-off height`
-1. Landing script works in four phases loosely based on the real [http://www.google.de/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0CCIQFjAA&url=http%3A%2F%2Fwww.hq.nasa.gov%2Falsj%2Fnasa-tnd-6846pt.1.pdf&ei=6nGoU4_gJcem4gTRg4GADg&usg=AFQjCNEm35GluOSoExObPW237HdfmSfQNw&sig2=8p_lUbw_5WHh0hx4mS6aEQ&bvm=bv.69411363,d.bGE Apollo mission descent planning]:
-#1. deceleration from orbit (retrograde burn) until 1/4 of periapsis velocity or radar altimeter starts working
-#1. retrograde burn while reducing velocity proportional to radar altitude
-#1. high gate (150m): descend and reduce surface velocity (thrusting downwards angled towards surface velocity vector)
-#1. low gate (15m and surface velocity is less than 0.1m/s): descend vertically for landing
+1. Landing script works in four phases loosely based on the real [Apollo mission descent planning](http://www.google.de/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0CCIQFjAA&url=http%3A%2F%2Fwww.hq.nasa.gov%2Falsj%2Fnasa-tnd-6846pt.1.pdf&ei=6nGoU4_gJcem4gTRg4GADg&usg=AFQjCNEm35GluOSoExObPW237HdfmSfQNw&sig2=8p_lUbw_5WHh0hx4mS6aEQ&bvm=bv.69411363,d.bGE) :
+  1. deceleration from orbit (retrograde burn) until 1/4 of periapsis velocity or radar altimeter starts working
+  1. retrograde burn while reducing velocity proportional to radar altitude
+  1. high gate (150m): descend and reduce surface velocity (thrusting downwards angled towards surface velocity vector)
+  1. low gate (15m and surface velocity is less than 0.1m/s): descend vertically for landing
 1. downward vertical velocity builds only through gravity (in contrast to the Apollo lander which thrusted upward to build downward velocity early in the burn).
 1. engine cut-off when landing gear almost touches the ground. Implemented using the control unit's radar altitude on the ground (''ecoh'' parameter).
 
@@ -83,11 +86,11 @@ Kerbal Automated Mission Challenge scripts. The Minmus missions illustrate how t
 1. Maneuver node execution script
 1. Mission toolkit node scripts assume impulsive burns, i.e. deltav happens instantly. Of course, this is not possible, but the node runner script runs the engines at full throttle to achieve shortest possible burn times.
 1. The script will 
-#1. warp to 1min before burn
-#1. orient the ship for the burn
-#1. warp to burn
-#1. burn full throttle, then
-#1. for very accurately changing deltav (better 0.1%) throttle down nearing burn end.
+  1. warp to 1min before burn
+  1. orient the ship for the burn
+  1. warp to burn
+  1. burn full throttle, then
+  1. for very accurately changing deltav (better 0.1%) throttle down nearing burn end.
 1. Workhorse of any mission script. Usually used alternating with maneuver node generator scripts.
 
 ## Orbital Maneuvering 
@@ -119,8 +122,8 @@ Kerbal Automated Mission Challenge scripts. The Minmus missions illustrate how t
 1. apoapsis defaults to half of the target bodies' soi
 1. for Minmus transfers detects whether Mun is in the way. The script then delays the maneuver for one orbit (until Mun is no longer in the way).
 1. maneuver angle is calculated based on:
-#1. Hohmann transfer time
-#1. target bodies' orbital period
+  1. Hohmann transfer time
+  1. target bodies' orbital period
 
 ### Intraplanetamry Hohmann inbound transfer 
 > `run [http://ksp.baldev.de/kos/mtkv3/krbnode.txt krbnode(peri_radius)].`
@@ -201,39 +204,3 @@ Kerbal Automated Mission Challenge scripts. The Minmus missions illustrate how t
 1. warp to lunar position which avoids prolonged transfer in the dark (without light for the solar cells)
 1. interplanetamry transfers
 1. docking (requires kOS thruster support)
-
-## Download files
-* [http://ksp.baldev.de/kos/mtkv3/aponode.txt aponode.txt]
-* [http://ksp.baldev.de/kos/mtkv3/aponode.txt aponode.txt]
-* [http://ksp.baldev.de/kos/mtkv3/bodyprops.txt bodyprops.txt]
-* [http://ksp.baldev.de/kos/mtkv3/checkvessel.txt checkvessel.txt]
-* [http://ksp.baldev.de/kos/mtkv3/exenode.txt exenode.txt]
-* [http://ksp.baldev.de/kos/mtkv3/hohnode.txt hohnode.txt]
-* [http://ksp.baldev.de/kos/mtkv3/incnode.txt incnode.txt]
-* [http://ksp.baldev.de/kos/mtkv3/kamc0.txt kamc0.txt]
-* [http://ksp.baldev.de/kos/mtkv3/kamc1.txt kamc1.txt]
-* [http://ksp.baldev.de/kos/mtkv3/kamc2.txt kamc2.txt]
-* [http://ksp.baldev.de/kos/mtkv3/kamc3.txt kamc3.txt]
-* [http://ksp.baldev.de/kos/mtkv3/kamc4.txt kamc4.txt]
-* [http://ksp.baldev.de/kos/mtkv3/krbnode.txt krbnode.txt]
-* [http://ksp.baldev.de/kos/mtkv3/landa.txt landa.txt]
-* [http://ksp.baldev.de/kos/mtkv3/landnode.txt landnode.txt]
-* [http://ksp.baldev.de/kos/mtkv3/landv.txt landv.txt]
-* [http://ksp.baldev.de/kos/mtkv3/ltoa.txt ltoa.txt]
-* [http://ksp.baldev.de/kos/mtkv3/ltov.txt ltov.txt]
-* [http://ksp.baldev.de/kos/mtkv3/perinode.txt perinode.txt]
-* [http://ksp.baldev.de/kos/mtkv3/prep.txt prep.txt]
-* [http://ksp.baldev.de/kos/mtkv3/soi.txt soi.txt]
-* [http://ksp.baldev.de/kos/mtkv3/soinode.txt soinode.txt]
-* [http://ksp.baldev.de/kos/mtkv3/steer.txt steer.txt]
-* [http://ksp.baldev.de/kos/mtkv3/tts.txt tts.txt]
-* [http://ksp.baldev.de/kos/mtkv3/warpday.txt warpday.txt]
-* [http://ksp.baldev.de/kos/mtkv3/warpdist.txt warpdist.txt]
-* [http://ksp.baldev.de/kos/mtkv3/warpfor.txt warpfor.txt]
-* [http://ksp.baldev.de/kos/mtkv3/warpinsoi.txt warpinsoi.txt]
-* [http://ksp.baldev.de/kos/mtkv3/warpoutsoi.txt warpoutsoi.txt]
-
-
-* The wiki doesn't like spaces in external links so you have to look for the craft file for yourself here: [http://ksp.baldev.de/kos/mtkv3 craft file directory]
-
-[[User:Baloan|Baloan]]

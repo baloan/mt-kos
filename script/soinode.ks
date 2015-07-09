@@ -34,14 +34,14 @@ set aburn to ac + aeject + asoi.
 set sma to (periapsis + 2*rb + apoapsis)/2. // semi major axis present orbit
 set ops to 2 * pi * sqrt(sma^3/mu).      // ship orbital period
 until aburn < as0 { set aburn to aburn - 360. }
-set eta to (as0 - aburn)/360 * ops.
-if eta < 60 { 
-    set eta to eta + ops.
+set etab to (as0 - aburn)/360 * ops.
+if etab < 60 { 
+    set etab to etab + ops.
     print "T+" + round(missiontime) + " too close for maneuver, waiting for one orbit, " + round(ops/60,1) + "m".
 }
 print "T+" + round(missiontime) + " ship, orbital period: " + round(ops/60,1) + "m".
-print "T+" + round(missiontime) + " | now: " + round(as0) + "', maneuver: " + round(aburn) + "' in " + round(eta/60,1) + "m".
-set nd to node(time:seconds + eta, 0, 0, deltav).
+print "T+" + round(missiontime) + " | now: " + round(as0) + "', maneuver: " + round(aburn) + "' in " + round(etab/60,1) + "m".
+set nd to node(time:seconds + etab, 0, 0, deltav).
 add nd.
 print "T+" + round(missiontime) + " Node created.".
 
