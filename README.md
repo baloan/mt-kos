@@ -41,15 +41,15 @@ Kerbal Automated Mission Challenge scripts. The Minmus missions illustrate how t
 1. You'll know why I call it "Viking" when you see the lander.
 1. Vessel: [http://ksp.baldev.de/kos/mtkv3 Minmus Lander 1b]
 
-    run kamc2.   // outbound
-    run kamc4.   // return
+	run kamc2.   // outbound
+	run kamc4.   // return
 
 ###  Minmus mission 2 
 1. This vessels' stage 2 separation requires one ''stage'' statements.
 1. Vessel: [http://ksp.baldev.de/kos/mtkv3 Minmus Lander 1c]
 
-    run kamc3.   // outbound
-    run kamc4.   // return
+	run kamc3.   // outbound
+	run kamc4.   // return
 
 ###  Known issues 
 1. When planet and moon are aligned with the sun it may happen that the lander travels in the planet's or moon's shadow for prolonged times during transfer. During those periods of travel in the dark the battery may run empty and shut down the kOS module due to lack of electricity. This will stop the script and require manual restarting of the mission script to execute the remaining commands. 
@@ -73,7 +73,7 @@ Kerbal Automated Mission Challenge scripts. The Minmus missions illustrate how t
 1. Calculation of target velocity for circular orbit using ''aponode''.
 
 ### Land / Vacuum 
-	run landv(ecoh).   // ecoh: engine cut-off height`
+	run landv(ecoh).   // ecoh: engine cut-off height
 1. Landing script works in four phases loosely based on the real [Apollo mission descent planning](http://www.google.de/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0CCIQFjAA&url=http%3A%2F%2Fwww.hq.nasa.gov%2Falsj%2Fnasa-tnd-6846pt.1.pdf&ei=6nGoU4_gJcem4gTRg4GADg&usg=AFQjCNEm35GluOSoExObPW237HdfmSfQNw&sig2=8p_lUbw_5WHh0hx4mS6aEQ&bvm=bv.69411363,d.bGE) :
   1. deceleration from orbit (retrograde burn) until 1/4 of periapsis velocity or radar altimeter starts working
   1. retrograde burn while reducing velocity proportional to radar altitude
