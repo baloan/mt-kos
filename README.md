@@ -31,17 +31,20 @@ Kerbal Automated Mission Challenge scripts. The Minmus missions illustrate how t
 ###  Mun mission
 
 1. Vessel: [Mun Lander 1b](http://ksp.baldev.de/kos/mtkv3)
+
     run kamc0.   // outbound
     run kamc1.   // return
 ###  Minmus mission "Wikinger" 
 1. This vessels' stage 2 separation requires two ''stage'' statements.
 1. You'll know why I call it "Viking" when you see the lander.
 1. Vessel: [http://ksp.baldev.de/kos/mtkv3 Minmus Lander 1b]
+
     run kamc2.   // outbound
     run kamc4.   // return
 ###  Minmus mission 2 
 1. This vessels' stage 2 separation requires one ''stage'' statements.
 1. Vessel: [http://ksp.baldev.de/kos/mtkv3 Minmus Lander 1c]
+
     run kamc3.   // outbound
     run kamc4.   // return
 ###  Known issues 
