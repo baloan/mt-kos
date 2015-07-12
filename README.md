@@ -32,47 +32,48 @@ Kerbal Automated Mission Challenge scripts. The Minmus missions illustrate how t
 
 1. Vessel: [Mun Lander 1b](http://ksp.baldev.de/kos/mtkv3)
 
-`run kamc0.   // outbound`
-
-`run kamc1.   // return`
+	run kamc0.   // outbound
+	run kamc1.   // return
 
 
 ###  Minmus mission "Wikinger" 
 1. This vessels' stage 2 separation requires two ''stage'' statements.
 1. You'll know why I call it "Viking" when you see the lander.
 1. Vessel: [http://ksp.baldev.de/kos/mtkv3 Minmus Lander 1b]
-`[http://ksp.baldev.de/kos/mtkv3/kamc2.txt run kamc2.]   // outbound`
-`[http://ksp.baldev.de/kos/mtkv3/kamc4.txt run kamc4.]   // return`
+
+	run kamc2.   // outbound
+	run kamc4.   // return
 
 ###  Minmus mission 2 
 1. This vessels' stage 2 separation requires one ''stage'' statements.
 1. Vessel: [http://ksp.baldev.de/kos/mtkv3 Minmus Lander 1c]
-`[http://ksp.baldev.de/kos/mtkv3/kamc3.txt run kamc3.]   // outbound`
-`[http://ksp.baldev.de/kos/mtkv3/kamc4.txt run kamc4.]   // return`
+
+	run kamc3.   // outbound
+	run kamc4.   // return
 
 ###  Known issues 
 1. When planet and moon are aligned with the sun it may happen that the lander travels in the planet's or moon's shadow for prolonged times during transfer. During those periods of travel in the dark the battery may run empty and shut down the kOS module due to lack of electricity. This will stop the script and require manual restarting of the mission script to execute the remaining commands. 
 
 ## Launch & Landing scripts 
 ###  Launch to Orbit / Atmosphere 
-> `[http://ksp.baldev.de/kos/mtkv3/ltoa.txt run ltoa.]`
+	run ltoa.
 1. Thrust limited by [http://en.wikipedia.org/wiki/Max_Q max q] during ascent. Max q defaults to 7000.
 1. Gravity turn: pitch depending on cos(altitude). Default: start at 1.000, ends at 50.000. I found these parameters to use least fuel. Can you configure it better?
 1. Staging separated from trajectory control (thrust/pitch). Staging to be implemented in main script using `when` clauses.
 1. Compensating for atmospheric drag when coasting to apoapsis.
-1. Time warp while coasting to apoapsis. 
+1. Time warp while coasting to apoapsis.
 1. Calculation of target velocity for circular orbit using ''aponode''.
 
 ### Launch to Orbit / Vacuum
-> `run [http://ksp.baldev.de/kos/mtkv3/ltov.txt ltov].`
+	run ltov.
 1. Thrust limited during initial ascent until craft points to the horizon. Thrust limit shall prevent reaching low orbit altitude during first 2 seconds (this is a problem on Minmus).
 1. Gravity turn delayed by 2 seconds to gain some altitude (non-quantitative). Turn will reduce pitch to the horizon compensated for gravitation (which is approx 1 degree on Mun).
 1. Staging separated from trajectory control (thrust/pitch). Staging to be implemented in main script using `when` clauses.
-1. Time warp while coasting to apoapsis. 
+1. Time warp while coasting to apoapsis.
 1. Calculation of target velocity for circular orbit using ''aponode''.
 
 ### Land / Vacuum 
-> `run [http://ksp.baldev.de/kos/mtkv3/landv.txt landv(ecoh)]. // ecoh: engine cut-off height`
+	run landv(ecoh).   // ecoh: engine cut-off height`
 1. Landing script works in four phases loosely based on the real [Apollo mission descent planning](http://www.google.de/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0CCIQFjAA&url=http%3A%2F%2Fwww.hq.nasa.gov%2Falsj%2Fnasa-tnd-6846pt.1.pdf&ei=6nGoU4_gJcem4gTRg4GADg&usg=AFQjCNEm35GluOSoExObPW237HdfmSfQNw&sig2=8p_lUbw_5WHh0hx4mS6aEQ&bvm=bv.69411363,d.bGE) :
   1. deceleration from orbit (retrograde burn) until 1/4 of periapsis velocity or radar altimeter starts working
   1. retrograde burn while reducing velocity proportional to radar altitude
@@ -82,41 +83,41 @@ Kerbal Automated Mission Challenge scripts. The Minmus missions illustrate how t
 1. engine cut-off when landing gear almost touches the ground. Implemented using the control unit's radar altitude on the ground (''ecoh'' parameter).
 
 ## Node Runner 
-> `run [http://ksp.baldev.de/kos/mtkv3/exenode.txt exenode].`
+	run exenode.
 1. Maneuver node execution script
 1. Mission toolkit node scripts assume impulsive burns, i.e. deltav happens instantly. Of course, this is not possible, but the node runner script runs the engines at full throttle to achieve shortest possible burn times.
-1. The script will 
+1. The script will
   1. warp to 1min before burn
   1. orient the ship for the burn
   1. warp to burn
   1. burn full throttle, then
-  1. for very accurately changing deltav (better 0.1%) throttle down nearing burn end.
+1. for very accurately changing deltav (better 0.1%) throttle down nearing burn end.
 1. Workhorse of any mission script. Usually used alternating with maneuver node generator scripts.
 
-## Orbital Maneuvering 
+## Orbital Maneuvering
 ### Apoapsis maneuver
-> `run [http://ksp.baldev.de/kos/mtkv3/aponode.txt aponode(altitude)].`
+	run aponode(altitude).
 1. create maneuver node at apoapsis for changing periapsis altitude
 
-### Periapsis maneuver 
-> `run [http://ksp.baldev.de/kos/mtkv3/perinode.txt perinode(altitude)].`
+### Periapsis maneuver
+	run perinode(altitude).
 1. create maneuver node at periapsis for changing apoapsis altitude
 1. See also: http://en.wikipedia.org/wiki/Oberth_effect
 
 ### Landing orbit maneuver 
-> `run [http://ksp.baldev.de/kos/mtkv3/landnode.txt landnode(altitude)].`
+	run landnode(altitude).
 1. Lowers periapsis to altitude
 1. Assumes a circular orbit
 1. Periapsis will be 30 degrees "after" the zenith (orbitwise) on the dayside of the body. In that position potential pilots and observers will have a good lighting conditions to view the vessel (no beams needed) and its shadow to judge altitude.
 
 ### Inclination adjustment 
-> `run [http://ksp.baldev.de/kos/mtkv3/incnode.txt incnode(tgtbody)].`
+	run incnode(tgtbody).
 1. Adjusts the orbits inclination to match tgtbodies' orbit inclination around the central body.
 1. Assumes a circular orbit
 
-## Intraplanetary Transfer 
-### Intraplanetary Hohmann outbound transfer 
-> `run [http://ksp.baldev.de/kos/mtkv3/hohnode.txt hohnode(tgtbody)].`
+## Intraplanetary Transfer
+### Intraplanetary Hohmann outbound transfer
+	run hohnode(tgtbody).
 1. creates a maneuver node for Kerbin to Mun or Minmus Hohmann transfer
 1. requires a circular orbit
 1. apoapsis defaults to half of the target bodies' soi
@@ -124,9 +125,9 @@ Kerbal Automated Mission Challenge scripts. The Minmus missions illustrate how t
 1. maneuver angle is calculated based on:
   1. Hohmann transfer time
   1. target bodies' orbital period
-
-### Intraplanetamry Hohmann inbound transfer 
-> `run [http://ksp.baldev.de/kos/mtkv3/krbnode.txt krbnode(peri_radius)].`
+  
+### Intraplanetary Hohmann inbound transfer 
+	run krbnode(peri_radius).
 1. creates a maneuver node for Mun or Minmus to Kerbin return Hohmann transfer
 1. the peri_radius parameter is the periapsis radius for the target body, NOT the periapsis altitude. `peri_radius = planet_radius + periapis (altitude)`. This is to allow usage with other planets. The planets radius is injected as a parameter and does not need to be "guessed" by the program.
 1. requires a circular orbit
@@ -137,65 +138,65 @@ Kerbal Automated Mission Challenge scripts. The Minmus missions illustrate how t
 1. CAVEAT: it seems like the moon's frame of reference is rotating. Thus an ejection angle of 90 degrees does lead to a distorted velocity vector once leaving the soi! I have solved this by calibrating the ejection angle.
 
 ## Warping
-### by duration 
-`run [http://ksp.baldev.de/kos/mtkv3/warpfor.txt warpfor(secs)].`
+### by duration
+	run warpfor(secs).
 1. warps for duration
 
 ### until sunrise 
-`run [http://ksp.baldev.de/kos/mtkv3/warpday.txt warpday].`
+	run warpday.
 1. warps until sunrise
 
 ### by distance 
-> `run [http://ksp.baldev.de/kos/mtkv3/warpdist.txt warpdist(refbody, dist)].`
+	run warpdist(refbody, dist).
 1. warps until passing distance dist relative to ''refbody''
 1. automatically recognizes whether to warp in or out
 1. determines velocity to/from ''refbody'' by measuring distance change regularly. The measurement time interval depends on the current warp factor.
 1. used by soi warp programs
 
 ### until entering soi 
-> `run [http://ksp.baldev.de/kos/mtkv3/warpinsoi.txt warpinsoi(tgtbody)].`
+	run warpinsoi(tgtbody).
 1. warps until entering soi of ''tgtbody''
 1. current body is used as ''refbody''
 1. ''tgtbody'' is required to positively recognize new soi
 
-### until leaving soi 
-> `run [http://ksp.baldev.de/kos/mtkv3/warpoutsoi.txt warpoutsoi(refbody, tgtbody)].`
+### until leaving soi
+	run warpoutsoi(refbody, tgtbody).
 1. TODO: to be changed to `run warpoutsoi.` to simplify interface. Parameters are not needed.
 1. warps until leaving soi of a body
 1. ''refbody'' is required to calculate distance (even after leaving soi)
 1. ''tgtbody'' is used to positively recognize new soi
 
 ## Miscellaneous 
-### Body properties database 
-> `run [http://ksp.baldev.de/kos/mtkv3/bodyprops.txt bodyprops].`
+### Body properties database
+	run bodyprops.
 1. Sets a body's properties global variables. A.k.a. "body database" by other kOS developers. Loads body specific properties for the current body.
-1. currently works for Kerbin, Mun and Minmus. 
+1. currently works for Kerbin, Mun and Minmus.
 
 ### Check vessel compatibility 
-> `run [http://ksp.baldev.de/kos/mtkv3/checkvessel.txt checkvessel(vesselname)].`
+	run checkvessel(vesselname).
 1. checks for a match of the vesselname
 1. intended for the mission script to check whether used with a compatible vessel
 1. remember: the mission script encodes staging behavior in ''when..then'' commands
 
-### Turn to sun 
-> `run [http://ksp.baldev.de/kos/mtkv3/tts.txt tts].`
+### Turn to sun
+	run tts.
 1. turns the vessel facing 90 degress from the sun
 1. makes sure simple solar cells receive light
 1. baloan: ''I had vessels running out of electricity because maneuver burn vectors accidentally were oriented towards the sun or away.''
 
 ### Sphere of influence
-> `run [http://ksp.baldev.de/kos/mtkv3/soi.txt soi(refbody)].`
+	run soi(refbody).
 1. return the ''refbody'''s soi in the ''soi'' variable
 1. is required by the intraplanetamry maneuver scripts
-1. it does NOT use a database but calculates using the ''body:mu'' values. See also [http://en.wikipedia.org/wiki/Sphere_of_influence_(astrodynamics) SOI]
+1. it does NOT use a database but calculates using the ''body:mu'' values. See also [SOI](http://en.wikipedia.org/wiki/Sphere_of_influence_(astrodynamics))
 
 ### Prepare
-> `run [http://ksp.baldev.de/kos/mtkv3/prep.txt prep].`
+	run prep.
 1. copied to the ship's local volume 1 when the mission scripts start
 1. contains initialization to restart scripts after a KSP restart; currently just ''switches to volume 0'' and runs ''bodyprops''
 
 ### Steer
-> `run [http://ksp.baldev.de/kos/mtkv3/steer.txt steer].`
+	run steer.
 1. wait for ship to orient, then return
 1. deprecated. to be removed in next mission toolkit
 1. see ''tts''
