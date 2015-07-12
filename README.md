@@ -33,6 +33,7 @@ Kerbal Automated Mission Challenge scripts. The Minmus missions illustrate how t
 1. Vessel: 'Mun Lander 1b'
 
     run kamc0.   // outbound
+    
     run kamc1.   // return
 
 ###  Minmus mission "Wikinger" 
@@ -41,6 +42,7 @@ Kerbal Automated Mission Challenge scripts. The Minmus missions illustrate how t
 1. Vessel: 'Minmus Lander 1b'
 
     run kamc2.   // outbound
+    
     run kamc4.   // return
 
 ###  Minmus mission 2 
@@ -48,6 +50,7 @@ Kerbal Automated Mission Challenge scripts. The Minmus missions illustrate how t
 1. Vessel: 'Minmus Lander 1c'
 
     run kamc3.   // outbound
+    
     run kamc4.   // return
 
 ###  Known issues 
@@ -56,7 +59,7 @@ Kerbal Automated Mission Challenge scripts. The Minmus missions illustrate how t
 ## Launch & Landing scripts 
 ###  Launch to Orbit / Atmosphere 
     run ltoa.
-1. Thrust limited by [http://en.wikipedia.org/wiki/Max_Q max q] during ascent. Max q defaults to 7000.
+1. Thrust limited by [max q](http://en.wikipedia.org/wiki/Max_Q) during ascent. Max q defaults to 7000.
 1. Gravity turn: pitch depending on cos(altitude). Default: start at 1.000, ends at 50.000. I found these parameters to use least fuel. Can you configure it better?
 1. Staging separated from trajectory control (thrust/pitch). Staging to be implemented in main script using `when` clauses.
 1. Compensating for atmospheric drag when coasting to apoapsis.
