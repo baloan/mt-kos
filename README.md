@@ -32,8 +32,8 @@ Kerbal Automated Mission Challenge scripts. The Minmus missions illustrate how t
 
 1. Vessel: [Mun Lander 1b](http://ksp.baldev.de/kos/mtkv3)
 
-	run kamc0.   // outbound
-	run kamc1.   // return
+    run kamc0.   // outbound
+    run kamc1.   // return
 
 
 ###  Minmus mission "Wikinger" 
@@ -41,22 +41,22 @@ Kerbal Automated Mission Challenge scripts. The Minmus missions illustrate how t
 1. You'll know why I call it "Viking" when you see the lander.
 1. Vessel: [http://ksp.baldev.de/kos/mtkv3 Minmus Lander 1b]
 
-	run kamc2.   // outbound
-	run kamc4.   // return
+    run kamc2.   // outbound
+    run kamc4.   // return
 
 ###  Minmus mission 2 
 1. This vessels' stage 2 separation requires one ''stage'' statements.
 1. Vessel: [http://ksp.baldev.de/kos/mtkv3 Minmus Lander 1c]
 
-	run kamc3.   // outbound
-	run kamc4.   // return
+    run kamc3.   // outbound
+    run kamc4.   // return
 
 ###  Known issues 
 1. When planet and moon are aligned with the sun it may happen that the lander travels in the planet's or moon's shadow for prolonged times during transfer. During those periods of travel in the dark the battery may run empty and shut down the kOS module due to lack of electricity. This will stop the script and require manual restarting of the mission script to execute the remaining commands. 
 
 ## Launch & Landing scripts 
 ###  Launch to Orbit / Atmosphere 
-	run ltoa.
+    run ltoa.
 1. Thrust limited by [http://en.wikipedia.org/wiki/Max_Q max q] during ascent. Max q defaults to 7000.
 1. Gravity turn: pitch depending on cos(altitude). Default: start at 1.000, ends at 50.000. I found these parameters to use least fuel. Can you configure it better?
 1. Staging separated from trajectory control (thrust/pitch). Staging to be implemented in main script using `when` clauses.
