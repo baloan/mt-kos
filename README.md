@@ -18,7 +18,7 @@ The scripts rely on physics and math to calculate the maneuver properties. Usual
 ## Requirements
 | Date | Version | KSP | kOS |
 | ---------- | --- | ----- | ------ |
-| 2015-07-15 | 1.0 | 1.0.4 | [0.17.4](https://github.com/KSP-KOS/KOS/releases/tag/v17.4) |
+| 2015-07-15 | 1.0 | 1.0.4 | [0.17.3](https://github.com/KSP-KOS/KOS/releases/tag/v17.3) |
 
 ## What's new? 
 1. [Kerbin](http://wiki.kerbalspaceprogram.com/wiki/Kerbin) - [Mun](http://wiki.kerbalspaceprogram.com/wiki/Mun)/[Minmus](http://wiki.kerbalspaceprogram.com/wiki/Minmus) transfer and return node creation
