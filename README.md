@@ -15,8 +15,10 @@ Provides a library of scripts for
 
 The scripts rely on physics and math to calculate the maneuver properties. Usually 2D there will be some vector math in the inclination and landing node scripts.
 
-## Requirements 
-Works with KSP 1.0.4 and [kOS 0.17.4](https://github.com/KSP-KOS/KOS/releases/tag/v17.4)
+## Requirements
+| Date | Version | KSP | kOS |
+| ---------- | --- | ----- | ------ |
+| 2015-07-15 | 1.0 | 1.0.4 | [0.17.4](https://github.com/KSP-KOS/KOS/releases/tag/v17.4) |
 
 ## What's new? 
 1. [Kerbin](http://wiki.kerbalspaceprogram.com/wiki/Kerbin) - [Mun](http://wiki.kerbalspaceprogram.com/wiki/Mun)/[Minmus](http://wiki.kerbalspaceprogram.com/wiki/Minmus) transfer and return node creation
