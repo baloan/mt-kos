@@ -34,12 +34,12 @@ if side > 0 {
 }
 set smas to ps:mag.                       
 set ops to 2*pi*sqrt(smas^3/mu).         // ship orbital period
-set eta to aburn/360*ops.
+set etam to aburn/360*ops.
 print "T+" + round(missiontime) + " orbital angle to maneuver: " + round(aburn).
-print "T+" + round(missiontime) + " orbit: " + round(ops) + "s, burn in " + round(eta) + "s".
+print "T+" + round(missiontime) + " orbit: " + round(ops) + "s, burn in " + round(etam) + "s".
 // calculate maneuver deltav
 set dv to amdelta:mag/ps:mag.            // math: dL = r x m dv, with r & dv perpendicular: dL/(r m) = dv, amdelta = dL/m
 print "T+" + round(missiontime) + " Inclination burn deltav: " + round(dv) + "m/s".
-set nd to node(time:seconds + eta, 0, -dv*cos(inc/2), -dv*sin(inc/2)).
+set nd to node(time:seconds + etam, 0, -dv*cos(inc/2), -dv*sin(inc/2)).
 add nd.
 print "T+" + round(missiontime) + " Node created.".
