@@ -50,10 +50,10 @@ add nd.
 
 // adjust for the body we are orbiting to rotate under us whilst we cruise to the descending node.
 set shiptonodedegrees to 360 * etam / body:rotationperiod.
-set adjustforshiptonodeseconds to ops * shiptonodedegrees / 360.
+set adjustforshiptonodeseconds to sin(90 - ABS(ORBIT:INCLINATION)) * ops * shiptonodedegrees / 360.
 // adjust for the body we are orbiting to rotate during the descent to periapsis to land with "run landv(3)." after the node is created.
 set adjustfororbitdegrees to 360 * (nd:orbit:period / 2) / body:rotationperiod.	
-set adjustfororbitseconds to ops * adjustfororbitdegrees / 360.
+set adjustfororbitseconds to sin(90 - ABS(nd:ORBIT:INCLINATION)) * ops * adjustfororbitdegrees / 360.
 
 remove nd.
 set nd to node(time:seconds + etam + adjustforshiptonodeseconds + adjustfororbitseconds, 0, 0, deltav).
