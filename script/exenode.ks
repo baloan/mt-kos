@@ -14,7 +14,7 @@ rcs off.
 set np to R(0,0,0) * nd:deltav.
 lock steering to np.
 set npd to np:direction.
-wait until abs(npd:pitch - facing:pitch) < 0.1 and abs(npd:yaw - facing:yaw) < 0.1.
+wait until abs(np:direction:pitch - ship:facing:pitch) < 0.1 and abs(np:direction:yaw - ship:facing:yaw) < 0.1.
 run warpfor(nd:eta - dob/2).
 print "T+" + round(missiontime) + " Orbital burn start " + round(nd:eta) + "s before apoapsis.".
 set tset to 0.
